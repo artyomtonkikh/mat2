@@ -27,10 +27,8 @@ class mybehaviour extends Behaviour {
         for (int i=0;i<agent.nodes.size();i++){
             ACLMessage msg=new ACLMessage(ACLMessage.INFORM);
             msg.addReceiver(new AID("agent"+String.valueOf(agent.nodes.get(i)), AID.ISLOCALNAME));
-            double b=0.5;
-            double a=-0.5;
             Random rand = new Random();
-            double noise=a+rand.nextDouble()*(b-a);
+            double noise=rand.nextGaussian();
             msg.setContent(String.valueOf(agent.number+noise));
             if(Math.random()<0.8)
                 agent.send(msg);
