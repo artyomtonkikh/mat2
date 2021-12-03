@@ -40,7 +40,7 @@ class mybehaviour extends Behaviour {
         return is_alive;
     }
     protected void getMessages(){
-        if(Math.random()<0.3){
+        if(Math.random()<0.2){
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
