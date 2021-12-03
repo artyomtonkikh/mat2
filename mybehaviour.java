@@ -19,10 +19,10 @@ class mybehaviour extends Behaviour {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        if(agent.iteration>=4){
+        if(agent.iteration>=10){
             getNumber();
         }
-        agent.iteration++;
+        //agent.iteration++;
         getMessages();
         for (int i=0;i<agent.nodes.size();i++){
             ACLMessage msg=new ACLMessage(ACLMessage.INFORM);
@@ -40,11 +40,12 @@ class mybehaviour extends Behaviour {
         return is_alive;
     }
     protected void getMessages(){
+        if(Math.random()<0.3){
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }}
         //is_alive = false;
         ACLMessage msg=agent.receive();
         Double summ=0.0;
@@ -53,6 +54,7 @@ class mybehaviour extends Behaviour {
             summ+= Double.valueOf(message)-agent.number;
             msg=agent.receive();
         }
+        agent.iteration++;
         agent.number+=summ*alpha;
     }
 
